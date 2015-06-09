@@ -14,7 +14,7 @@
             <!-- Header -->
             <TextBlock DockPanel.Dock="Top" Text="Tornado" Style="{DynamicResource HeaderStyle}" ></TextBlock>
             <DockPanel DockPanel.Dock="Top">
-                <Button DockPanel.Dock="Right" Content="Cleanup" Style="{DynamicResource ButtonStyle}"></Button>
+                <Button DockPanel.Dock="Right" Content="Cleanup" Style="{DynamicResource ButtonStyle}" Command="{Binding CleanupCommand}"></Button>
                 <TextBox Text="{Binding Path}" Style="{DynamicResource TextBoxStyle}"></TextBox>
             </DockPanel>
             <Grid></Grid>
