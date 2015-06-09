@@ -7,13 +7,13 @@ namespace Tornado.Wpf
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IMainview
     {
         public MainWindow()
         {
             InitializeComponent();
 
-            DataContext = new MainViewModel();
+            DataContext = new MainViewModel(this);
         }
 
         private void MainWindow_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -10,14 +10,17 @@
       MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown"
         >
     <Grid Margin="10" Background="#F0FFFFFF">
-        <DockPanel  Margin="10">
+        <StackPanel  Margin="10">
             <!-- Header -->
-            <TextBlock DockPanel.Dock="Top" Text="Tornado" Style="{DynamicResource HeaderStyle}" ></TextBlock>
-            <DockPanel DockPanel.Dock="Top">
+            <DockPanel >
+                <Button DockPanel.Dock="Right" Content="X" Command="{Binding CloseCommand}" Style="{DynamicResource LinkButtonStyle}" ></Button>
+                <TextBlock Text="Tornado" Style="{DynamicResource HeaderStyle}" ></TextBlock>
+            </DockPanel>
+            <DockPanel >
                 <Button DockPanel.Dock="Right" Content="Cleanup" Style="{DynamicResource ButtonStyle}" Command="{Binding CleanupCommand}"></Button>
                 <TextBox Text="{Binding Path}" Style="{DynamicResource TextBoxStyle}"></TextBox>
             </DockPanel>
-            <Grid></Grid>
-        </DockPanel>
+            <TextBlock Text="{Binding CleanupResult, Mode=OneWay}" ></TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
