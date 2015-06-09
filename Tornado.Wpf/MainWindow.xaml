@@ -1,8 +1,23 @@
 ﻿<Window x:Class="Tornado.Wpf.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Tornado.ViewModels;assembly=Tornado.ViewModels"
+        mc:Ignorable="d"        
+        WindowStyle="None" AllowsTransparency="True" Background="#D02C628B"
+        Title="Tornaro" Height="350" Width="525" d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+      MouseLeftButtonDown="MainWindow_OnMouseLeftButtonDown"
+        >
+    <Grid Margin="10" Background="#F0FFFFFF">
+        <DockPanel  Margin="10">
+            <!-- Header -->
+            <TextBlock DockPanel.Dock="Top" Text="Tornado" Style="{DynamicResource HeaderStyle}" ></TextBlock>
+            <DockPanel DockPanel.Dock="Top">
+                <Button DockPanel.Dock="Right" Content="Cleanup" Style="{DynamicResource ButtonStyle}"></Button>
+                <TextBox Text="{Binding Path}" Style="{DynamicResource TextBoxStyle}"></TextBox>
+            </DockPanel>
+            <Grid></Grid>
+        </DockPanel>
     </Grid>
 </Window>
