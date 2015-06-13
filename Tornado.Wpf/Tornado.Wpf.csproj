@@ -112,7 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tornado.ViewModels\Tornado.ViewModels.csproj">
-      <Project>{635F5938-2620-40A0-AECF-CE18AC4A69CC}</Project>
+      <Project>{e31635b6-f768-4b23-90e4-16846e41f749}</Project>
       <Name>Tornado.ViewModels</Name>
     </ProjectReference>
   </ItemGroup>

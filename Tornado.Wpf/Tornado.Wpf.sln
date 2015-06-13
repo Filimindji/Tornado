@@ -5,11 +5,11 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tornado.Wpf", "Tornado.Wpf.csproj", "{5F36B483-449A-4E2A-AA97-69312070C98D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tornado.ViewModels", "..\Tornado.ViewModels\Tornado.ViewModels.csproj", "{635F5938-2620-40A0-AECF-CE18AC4A69CC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tornado.Framework", "..\Tornado.Framework\Tornado.Framework.csproj", "{64068CEE-2805-4191-AA63-DA3368DABB30}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tornado.Business", "..\Tornado.Business\Tornado.Business.csproj", "{54535145-1CA1-46A0-B869-71F06CC037F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tornado.ViewModels", "..\Tornado.ViewModels\Tornado.ViewModels.csproj", "{E31635B6-F768-4B23-90E4-16846E41F749}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tornado.Framework", "..\Tornado.Framework\Tornado.Framework.csproj", "{F1C6BF0E-4BB3-469A-96C1-565A669745A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{5F36B483-449A-4E2A-AA97-69312070C98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F36B483-449A-4E2A-AA97-69312070C98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F36B483-449A-4E2A-AA97-69312070C98D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{635F5938-2620-40A0-AECF-CE18AC4A69CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{635F5938-2620-40A0-AECF-CE18AC4A69CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{635F5938-2620-40A0-AECF-CE18AC4A69CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{635F5938-2620-40A0-AECF-CE18AC4A69CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64068CEE-2805-4191-AA63-DA3368DABB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64068CEE-2805-4191-AA63-DA3368DABB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64068CEE-2805-4191-AA63-DA3368DABB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64068CEE-2805-4191-AA63-DA3368DABB30}.Release|Any CPU.Build.0 = Release|Any CPU
 		{54535145-1CA1-46A0-B869-71F06CC037F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{54535145-1CA1-46A0-B869-71F06CC037F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54535145-1CA1-46A0-B869-71F06CC037F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54535145-1CA1-46A0-B869-71F06CC037F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E31635B6-F768-4B23-90E4-16846E41F749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E31635B6-F768-4B23-90E4-16846E41F749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E31635B6-F768-4B23-90E4-16846E41F749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E31635B6-F768-4B23-90E4-16846E41F749}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1C6BF0E-4BB3-469A-96C1-565A669745A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1C6BF0E-4BB3-469A-96C1-565A669745A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1C6BF0E-4BB3-469A-96C1-565A669745A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1C6BF0E-4BB3-469A-96C1-565A669745A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
