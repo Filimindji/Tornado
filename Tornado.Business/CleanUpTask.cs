@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using ServiceStack;
 using Tornado.Framework;
+using Tornado.Server.ServiceModel;
+using File = Tornado.Server.ServiceModel.File;
 
 namespace Tornado.Business
 {
@@ -12,6 +15,7 @@ namespace Tornado.Business
         private readonly string[] _extensionsToAnalyse = { ".mkv", ".avi" };
 
         private readonly List<string> _failed = new List<string>();
+        private string baseUri = "http://tornado-west-eu.cloudapp.net";
         public bool IsRunning { get; private set; }
 
         public async Task CleanUp(string path)
@@ -54,10 +58,19 @@ namespace Tornado.Business
 
             string hash = HashHelper.ComputeHash(filename);
 
-            //Metadata [] metadatas = GetMetadata(hash);
+            FileResponse fileResponse = await GetFile(hash);
 
         }
 
+        private async Task<FileResponse> GetFile(string hash)
+        {
+            using (JsonServiceClient client = new JsonServiceClient(baseUri))
+            {
+                File fileRequest = new File();
+                fileRequest.Hash = hash;
+                return await client.PostAsync<FileResponse>(fileRequest);
+            }
+        }
 
 
         private bool CanAnalyse(string extension)
