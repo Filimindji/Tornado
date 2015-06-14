@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using ServiceStack;
 using Tornado.Framework;
+using Tornado.Plugin;
 using Tornado.Server.ServiceModel;
 using File = Tornado.Server.ServiceModel.File;
+using Metadata = Tornado.Server.ServiceModel.Metadata;
 
 namespace Tornado.Business
 {
@@ -61,14 +63,26 @@ namespace Tornado.Business
             FileResponse fileResponse = await GetFile(hash);
             fileResponse.Metadata = new[]
             {
-                new Metadata() {Key = "extension", Value = Path.GetExtension(filename) }, 
+                new Metadata {Key = "extension", Value = Path.GetExtension(filename) }, 
             };
 
+            foreach (var plugin in PluginManager.Plugins)
+            {
+                var metadatas = plugin.GetMetadata(filename);
+                foreach (var metadata in metadatas)
+                {
+                    if (fileResponse.Metadatas.ContainsKey(metadata.Key) == false)
+                        fileResponse.Metadatas.Add(metadata.Key, new List<string>());
+
+                    fileResponse.Metadatas[metadata.Key].Add(metadata.Value);
+                }
+            }
+
+            // todo : move to somewhere else like conf file for example
             RenameRule renameRule = new RenameRule();
             renameRule.Condition = "in([extension], '.mkv', '.avi')";
             renameRule.FilenameFormat = Path.GetFileName(filename);
             renameRule.Execute(filename, fileResponse);
-
         }
 
         private async Task<FileResponse> GetFile(string hash)

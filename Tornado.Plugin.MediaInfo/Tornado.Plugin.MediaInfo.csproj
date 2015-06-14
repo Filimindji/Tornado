@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{54535145-1CA1-46A0-B869-71F06CC037F5}</ProjectGuid>
+    <ProjectGuid>{15C0C61B-113A-474D-A4B0-3365F1C93C31}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tornado.Business</RootNamespace>
-    <AssemblyName>Tornado.Business</AssemblyName>
+    <RootNamespace>Tornado.Plugin.MediaInfo</RootNamespace>
+    <AssemblyName>Tornado.Plugin.MediaInfo</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\Tornado.Wpf\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>83427423</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,24 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\Tornado.Wpf\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NCalc, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Tornado.Wpf\packages\NCalc-Edge.1.4.1.0\lib\NCalc.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Client, Version=4.0.40.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Tornado.Wpf\packages\ServiceStack.Client.4.0.40\lib\net40\ServiceStack.Client.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ServiceStack.Interfaces">
-      <HintPath>..\Tornado.Wpf\packages\ServiceStack.Interfaces.4.0.40\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid+xamarin.ios10\ServiceStack.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=4.0.40.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\Tornado.Wpf\packages\ServiceStack.Text.4.0.40\lib\net40\ServiceStack.Text.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MediaInfoDotNet">
+      <HintPath>..\Tornado.Wpf\packages\MediaInfoDotNet.0.7.62.40921\lib\net40\MediaInfoDotNet.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,27 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CleanUpTask.cs" />
-    <Compile Include="FileResponse.cs" />
-    <Compile Include="PluginManager.cs" />
+    <Compile Include="MediaInfoPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RenameRule.cs" />
-    <Compile Include="Rule.cs" />
-    <Compile Include="TornadoService.dtos.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="x64\MediaInfo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\MediaInfo.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MediaInfoDotNet.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Tornado.Framework\Tornado.Framework.csproj">
-      <Project>{F1C6BF0E-4BB3-469A-96C1-565A669745A6}</Project>
-      <Name>Tornado.Framework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tornado.Plugin\Tornado.Plugin.csproj">
-      <Project>{1bfbd72a-1f21-4870-9d1d-5821e27a6cd6}</Project>
+      <Project>{1BFBD72A-1F21-4870-9D1D-5821E27A6CD6}</Project>
       <Name>Tornado.Plugin</Name>
     </ProjectReference>
   </ItemGroup>
@@ -91,7 +74,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\Tornado.Wpf\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Tornado.Wpf\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets'))" />
   </Target>
+  <Import Project="..\Tornado.Wpf\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets" Condition="Exists('..\Tornado.Wpf\packages\ILRepack.MSBuild.Task.1.0.9\build\ILRepack.MSBuild.Task.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -99,4 +84,56 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
+  
+<!-- ILRepack -->
+<Target Name="AfterBuild" Condition="'$(Configuration)' == 'Release'">
+
+   <ItemGroup>
+    <InputAssemblies Include="$(OutputPath)\MediaInfoDotNet.dll" />
+    <InputAssemblies Include="$(OutputPath)\Tornado.Plugin.MediaInfo.dll" />
+   </ItemGroup>
+
+   <ItemGroup>
+    <!-- Must be a fully qualified name -->
+<!--     <DoNotInternalizeAssemblies Include="ExampleAssemblyToMerge3" /> -->
+   </ItemGroup>
+
+   <ILRepack 
+    Parallel="true"
+    Internalize="true"
+    InternalizeExclude="@(DoNotInternalizeAssemblies)"
+    InputAssemblies="@(InputAssemblies)"
+    TargetKind="Dll"
+    OutputFile="$(OutputPath)\$(AssemblyName).dll"
+   />
+   
+      
+       <Copy
+        SourceFiles="$(TargetPath)"
+        DestinationFolder="$(SolutionDir)$(OutDir)Plugins\Tornado.Plugin.MediaInfo">
+        <Output
+            TaskParameter="CopiedFiles"
+            ItemName="SuccessfullyCopiedFiles"/>
+     </Copy>
+	 
+       <Copy
+        SourceFiles="$(TargetDir)\x86\MediaInfo.dll"
+        DestinationFolder="$(SolutionDir)$(OutDir)Plugins\Tornado.Plugin.MediaInfo\x86">
+        <Output
+            TaskParameter="CopiedFiles"
+            ItemName="SuccessfullyCopiedFiles"/>
+     </Copy>	
+
+       <Copy
+        SourceFiles="$(TargetDir)\x64\MediaInfo.dll"
+        DestinationFolder="$(SolutionDir)$(OutDir)Plugins\Tornado.Plugin.MediaInfo\x64">
+        <Output
+            TaskParameter="CopiedFiles"
+            ItemName="SuccessfullyCopiedFiles"/>
+     </Copy>		 
+
+</Target>
+<!-- /ILRepack -->
+
 </Project>
