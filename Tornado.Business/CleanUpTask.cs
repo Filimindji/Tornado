@@ -59,6 +59,15 @@ namespace Tornado.Business
             string hash = HashHelper.ComputeHash(filename);
 
             FileResponse fileResponse = await GetFile(hash);
+            fileResponse.Metadata = new[]
+            {
+                new Metadata() {Key = "extension", Value = Path.GetExtension(filename) }, 
+            };
+
+            RenameRule renameRule = new RenameRule();
+            renameRule.Condition = "in([extension], '.mkv', '.avi')";
+            renameRule.FilenameFormat = Path.GetFileName(filename);
+            renameRule.Execute(filename, fileResponse);
 
         }
 
